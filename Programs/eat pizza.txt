@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Solution {
+    public long maxWeight(int[] pizzas) {
+        int len=pizzas.length;
+        Arrays.sort(pizzas);
+
+        int odd=(int)Math.ceil((len/4.0)/2);
+        int even = (len/4)-odd;
+        // System.out.print(odd);
+
+        long res=0;
+        int temp=odd;
+
+        int i=0;
+        while(odd>0){
+            res+=pizzas[len-i-1];
+            odd--;
+            i++;
+        }
+
+        int j=2;
+        len-=temp;
+        while(even>0){
+            res+=pizzas[len-j];
+            System.out.println(res);
+            j+=2;
+            even--;
+        }
+
+        return res;
+    }
+}
