@@ -1,0 +1,22 @@
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        List<List<Integer>> res= new ArrayList<>();
+        int len = nums.length;
+       
+        res.add(new ArrayList<>());
+
+        for(int num:nums){
+            int len1=res.size();
+            for(int i=0;i<len1;i++){
+                List<Integer> list = new ArrayList<>(res.get(i));
+                list.add(num);
+                Collections.sort(list);
+                if(!res.contains(list)){
+                    res.add(list);
+                }
+            }
+        }
+
+        return res;
+    }
+}
